@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/22 20:49:23 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/22 20:51:57 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,8 @@ typedef struct s_vars
 int			ft_strcmp(const char *s1, const char *s2);
 
 // mlx functions
-void		ft_mlx_pixel_put(t_data *data, int x_coord, int y_coord, int color);
+void		ft_mlx_pixel_put(t_data *data, int x_coord, 
+                                int y_coord, int color);
+
+//display functions
+void    ft_display_fractals(char **argv);
