@@ -12,17 +12,17 @@
 
 #include "fractol.h"
 
-int     main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_vars   vars;
-    t_data   img;
+	t_vars vars;
+	t_data img;
 
-    if (argc > 1 && argc < 5) 
-        ft_display_mandel(argv);
-    else
-    {
-        perror("Usage: COMPLETE THIS LATER");
-        exit(1);
-    }
-    return (0);
+	if (argc > 1 && argc < 5)
+		ft_display_mandel(argv);
+	else
+	{
+		perror("Usage: COMPLETE THIS LATER");
+		exit(1);
+	}
+	return (0);
 }

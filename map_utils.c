@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/22 20:49:23 by rsrour           ###   ########.fr       */
+/*   Created: 2025/02/22 18:04:06 by rsrour            #+#    #+#             */
+/*   Updated: 2025/02/22 19:36:27 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "fractol.h"
 
-typedef struct s_data
+double	map(int mapped_value, int start, int end)
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}			t_data;
-
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*win;
-}			t_vars;
-
-int			ft_strcmp(const char *s1, const char *s2);
-
-// mlx functions
-void		ft_mlx_pixel_put(t_data *data, int x_coord, int y_coord, int color);
+	return (end - start) * (mapped_value);
+}
