@@ -6,13 +6,13 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:46:35 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/22 20:46:57 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/23 21:04:10 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_mlx_pixel_put(t_data *data, int x_coord, int y_coord, int color)
+void	ft_mlx_pixel_put(t_image *data, int x_coord, int y_coord, int color)
 {
 	char	*dest;
 
