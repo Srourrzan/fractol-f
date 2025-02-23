@@ -12,7 +12,6 @@
 
 #include "fractol.h"
 
-void    ft_display_fractals(char **argv)
+void	ft_display_fractals(char **argv)
 {
-    
 }

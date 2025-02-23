@@ -32,8 +32,7 @@ typedef struct s_vars
 int			ft_strcmp(const char *s1, const char *s2);
 
 // mlx functions
-void		ft_mlx_pixel_put(t_data *data, int x_coord, 
-                                int y_coord, int color);
+void		ft_mlx_pixel_put(t_data *data, int x_coord, int y_coord, int color);
 
-//display functions
-void    ft_display_fractals(char **argv);
+// display functions
+void		ft_display_fractals(char **argv);

@@ -14,8 +14,8 @@
 
 int	main(int argc, char **argv)
 {
-	t_vars vars;
-	t_data img;
+	t_vars	vars;
+	t_data	img;
 
 	if (argc > 1 && argc < 5)
 		ft_display_fractals(argv);
