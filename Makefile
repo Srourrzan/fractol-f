@@ -2,7 +2,7 @@
 
 TARGET = fractol
 SRCS = main.c map_utils.c display_utils.c mlx_utils.c std_utils.c
-OBJDIR = obj
+OBJ_DIR = obj
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
@@ -14,15 +14,18 @@ M_FLAGS = -lm
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(MLX_FLAGS) $(M_FLAGS) $(OBJS) -o $(TARGET)
-	touch output.txt trials.txt
+	$(CC) $(OBJS) -o $(TARGET) $(MLX_FLAGS)
 
 test:
 	@echo $(OBJS)
 
+# $(OBJ_DIR)/%.o: %.c
+# 	@mkdir -p $(OBJ_DIR)
+# 	$(CC) $(CFLAGS) $(MLX_FLAGS) $(M_FLAGS) -c $< -o $@ 
+
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(MLX_FLAGS) $(M_FLAGS) -c $< -o $@ 
+	$(CC) $(CFLAGS) -c $< -o $@ 
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
