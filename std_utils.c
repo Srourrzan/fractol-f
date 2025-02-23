@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:25:37 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/23 20:32:09 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/23 20:53:51 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ double	ft_atof(char *src)
 		d_num = (d_num * 10) + (src[iter] - '0');
 		iter++;
 	}
-	while (src[iter] >= '0' && src[iter] <= '9')
+	while (src[iter])
 	{
 		d_num = (src[iter] - '0') / ten;
 		ten *= 10;
