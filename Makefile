@@ -2,7 +2,7 @@
 
 TARGET = fractol
 SRCS = main.c map_utils.c display_utils.c mlx_utils.c std_utils.c finish_utils.c parse_args.c \
-		sets_utils.c
+		fractol_utils.c
 OBJ_DIR = obj
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))

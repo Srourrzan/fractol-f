@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 15:33:07 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 15:40:05 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void			ft_mlx_pixel_put(t_image *data, int x_coord, int y_coord,
 					int color);
 
 // sets functions
-void			ft_find_id(t_mlx *i_mlx, char **argv, int argc);
+void			ft_find_id(t_mlx i_mlx, char **argv, int argc);
 void   ft_fractol(char **argv, int argc);
 
 // finish_utils functions
