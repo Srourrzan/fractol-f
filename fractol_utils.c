@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:03:45 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 18:40:54 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:58:07 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_init_by_id(t_mlx *i_mlx, char **argv, int argc)
 {
+	if (!i_mlx)
+		return ;
 	if (!ft_strcmp(argv[1], "Mandelbrot"))
 	{
 		i_mlx->fractal.id = 1;
