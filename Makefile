@@ -16,13 +16,6 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $(TARGET) $(MLX_FLAGS)
 
-test:
-	@echo $(OBJS)
-
-# $(OBJ_DIR)/%.o: %.c
-# 	@mkdir -p $(OBJ_DIR)
-# 	$(CC) $(CFLAGS) $(MLX_FLAGS) $(M_FLAGS) -c $< -o $@ 
-
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@ 

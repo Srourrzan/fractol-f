@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:04:06 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/22 19:36:27 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 13:11:26 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 double	map(int mapped_value, int start, int end)
 {
-	return (end - start) * (mapped_value);
+	return ((end - start) * (mapped_value));
 }
