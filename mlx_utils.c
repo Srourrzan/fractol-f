@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:46:35 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 16:27:56 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:15:13 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,11 @@ void	ft_init_mlx(t_mlx *i_mlx)
 	i_mlx->win = mlx_new_window(i_mlx->mlx, 1000, 1000, "Fract-ol");
 	if (!i_mlx->win)
 		ft_clean_and_exit(i_mlx, 6);
+	i_mlx->img.img = mlx_new_image(i_mlx->mlx, 1000, 1000);
+	if (!i_mlx->img.img)
+		ft_clean_and_exit(i_mlx, 7);
+	i_mlx->img.addr = mlx_get_data_addr(i_mlx->img.img, &i_mlx->img.bits_per_pixel,
+				&i_mlx->img.line_length, &i_mlx->img.endian);
+	if (!i_mlx->img.addr)
+		ft_clean_and_exit(i_mlx, 8);
 }

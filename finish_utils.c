@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:06:18 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 16:16:32 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:19:29 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,17 @@ void	ft_exit(int exit_num)
 
 void	ft_clean(t_mlx *i_mlx)
 {
+	if (!i_mlx)
+		return ;
+	if (i_mlx->img.img)
+		mlx_destroy_image(i_mlx->mlx, i_mlx->img.img);
+	if (i_mlx->win)
+		mlx_destroy_window(i_mlx->mlx, i_mlx->win);
 	if (i_mlx->mlx)
 	{
 		mlx_destroy_display(i_mlx->mlx);
 		free(i_mlx->mlx);
+		i_mlx->mlx = NULL;
 	}
 }
 
