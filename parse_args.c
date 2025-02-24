@@ -6,11 +6,19 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:13:32 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 13:14:38 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 14:00:10 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static void    init_var(int *iter, double *d_num, int *ten, int *sign)
+{
+	*sign = 1;
+	*d_num = 0.0;
+	*iter = 0;
+	*ten = 10;
+}
 
 int	ft_is_float(char *src)
 {
@@ -30,7 +38,7 @@ int	ft_is_float(char *src)
 		iter++;
 	while (src[iter])
 	{
-		if (src[iter] < '0' || src[iter] > '9')
+		if ((src[iter] < '0' || src[iter] > '9') && src[iter] != '.')
 		{
 			status = 0;
 			break ;
@@ -47,32 +55,25 @@ double	ft_atof(char *src)
 	int		ten;
 	int		sign;
 
-	sign = 1;
-	d_num = 0.0;
-	iter = 0;
-	ten = 10;
+	init_var(&iter, &d_num, &ten, &sign);
 	if (src[iter] == '-' || src[iter] == '+')
 	{
 		if (src[iter] == '-')
 			sign = -1;
 		iter++;
 	}
-	while (src[iter])
+	while (src[iter] >= '0' && src[iter] <= '9')
 	{
-		if (src[iter] == '.')
-		{
-			iter++;
-			break ;
-		}
 		d_num = (d_num * 10) + (src[iter] - '0');
 		iter++;
 	}
-	while (src[iter])
-	{
-		d_num = (src[iter] - '0') / ten;
-		ten *= 10;
-		iter++;
-	}
+    if (src[iter] == '.')
+        iter++;
+    while(src[iter])
+    {
+        d_num += (double)(src[iter++] - '0') / ten;
+        ten *= 10;
+    }
 	return (d_num * sign);
 }
 
