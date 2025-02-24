@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:32:36 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 18:46:48 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:53:12 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void  ft_init_mandelbrot(t_mlx *i_mlx)
 {
     i_mlx->fractal.x = 100;
     i_mlx->fractal.y = 100;
+    i_mlx->fractal.height = 1000;
+    i_mlx->fractal.width = 1000;
 }
 /*
  * z = x + iy

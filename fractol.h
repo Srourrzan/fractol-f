@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 18:45:37 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:52:18 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_fractal
 	int			x;
 	int			y;
 	int			zoom;
+	int			height;
+	int			width;
 }				t_fractal;
 
 typedef struct s_mlx
