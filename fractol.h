@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 18:52:18 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 19:35:25 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_fractal
 	int			id;
 	double		creal;
 	double		cimaginary;
-	double		zx;
-	double		zy;
+	double		minreal;
+	double		maxreal;
 	int			x;
 	int			y;
 	int			zoom;
@@ -74,4 +74,4 @@ int				ft_validate_args(char **argv);
 double	ft_atof(char *src);
 
 //mandelbrot functions
-void ft_mandelbrot(t_mlx *i_mlx, char **argv);
+void ft_mandelbrot(t_mlx *i_mlx);
