@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:32:36 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 19:58:39 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 20:07:30 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	ft_init_mandelbrot(t_fractal *fractal)
 	fractal->width = 1000;
 	fractal->minreal = -3.0;
 	fractal->maxreal = 2.0;
+    fractal->color = 0xE5989B;
+    fractal->max_iter = 150;
 }
 
 void	ft_coeffs(t_fractal *fractal)
@@ -29,11 +31,11 @@ void	ft_coeffs(t_fractal *fractal)
 	range = fractal->maxreal - fractal->minreal;
 	fractal->creal = fractal->x * (range / fractal->width) + fractal->minreal;
 	range = fractal->max_im - fractal->min_im;
-	fractal->cimaginary = fractal->y * (range / fractal->height)
-		+ fractal->min_im;
+	fractal->cim = fractal->y * (range / fractal->height)+ fractal->min_im;
 }
 /*
  * z = x + iy
+ * z_(n+1) = z_(n)^2 + c
  */
 void	ft_mandelbrot(t_mlx *i_mlx)
 {
@@ -48,8 +50,7 @@ void	ft_mandelbrot(t_mlx *i_mlx)
 		while (fractal.y < fractal.height)
 		{
 			ft_coeffs(&fractal);
-			// ft_mlx_pixel_put(&i_mlx->img, fractal.creal, fractal.cimaginary,
-				0xE5989B);
+			ft_mlx_pixel_put(&i_mlx->img, fractal.creal, fractal.cim, 0xE5989B);
 			fractal.y++;
 		}
 		fractal.x++;

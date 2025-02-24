@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 19:58:35 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 20:03:21 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_fractal
 {
 	int			id;
 	double		creal;
-	double		cimaginary;
+	double		cim;
 	double		minreal;
 	double		maxreal;
 	double		min_im;
@@ -40,6 +40,8 @@ typedef struct s_fractal
 	int			zoom;
 	int			height;
 	int			width;
+	int			max_iter;
+	int			color;
 }				t_fractal;
 
 typedef struct s_mlx
