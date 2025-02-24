@@ -6,18 +6,18 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:03:45 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 16:16:44 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:40:54 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_find_id(t_mlx *i_mlx, char **argv, int argc)
+void	ft_init_by_id(t_mlx *i_mlx, char **argv, int argc)
 {
 	if (!ft_strcmp(argv[1], "Mandelbrot"))
 	{
 		i_mlx->fractal.id = 1;
-		//ft_mandelbrot(i_mlx, argv);
+		ft_mandelbrot(i_mlx, argv);
 	}
 	else if (!ft_strcmp(argv[1], "Julia") && (argc == 4 || argc == 2))
 	{
@@ -38,6 +38,7 @@ void	ft_fractol(char **argv, int argc)
 	t_mlx	i_mlx;
 
 	ft_init_mlx(&i_mlx);
-	ft_find_id(&i_mlx, argv, argc);
+	ft_init_by_id(&i_mlx, argv, argc);
+	mlx_loop(i_mlx.mlx);
 	ft_clean(&i_mlx);
 }

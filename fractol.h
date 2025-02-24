@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 16:01:23 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:45:37 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			ft_mlx_pixel_put(t_image *data, int x_coord, int y_coord,
 void	ft_init_mlx(t_mlx *i_mlx);
 
 // sets functions
-void			ft_find_id(t_mlx *i_mlx, char **argv, int argc);
+void			ft_init_by_id(t_mlx *i_mlx, char **argv, int argc);
 void   ft_fractol(char **argv, int argc);
 
 // finish_utils functions
@@ -70,3 +70,6 @@ void 	ft_clean_and_exit(t_mlx *i_mlx, int exit_num);
 int				ft_is_float(char *src);
 int				ft_validate_args(char **argv);
 double	ft_atof(char *src);
+
+//mandelbrot functions
+void ft_mandelbrot(t_mlx *i_mlx, char **argv);
