@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:25:37 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/23 20:53:51 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 13:06:45 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,38 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (s1[iter] - s2[iter]);
 }
 
-void	ft_exit(int exit_num)
+int		ft_strlen(char *src)
 {
-	exit(exit_num);
+	int		len;
+
+	len = 0;
+	while(src[len])
+		len++;
+	return (len);
 }
-// int	ft_atoi(char *src)
-// {
-// 	int	iter;
-// }
+
+static char	*ft_strchr(char *src, int c)
+{
+	while (*src != '\0' && *src != (unsigned char )c)
+		src++;
+	if (*src == (unsigned char)c)
+		return ((char *)src);
+	return (NULL);
+}
+
+static char	*ft_strrchr(char *src, int c)
+{
+	int		index;
+
+	index = ft_strlen(src);
+	while(index >= 0)
+	{
+		if (src[index] == (unsigned char)c)
+			return ((char *)src + index);
+		index--;
+	}
+	return (NULL);
+}
 
 int		ft_is_float(char *src)
 {
@@ -39,24 +63,20 @@ int		ft_is_float(char *src)
 	
 	iter = 0;
 	status = 1;
-	d_check = 0;
-	while ((src[iter] >= '0' && src[iter] <= '9') 
-			|| (src[iter] == '.') || (src[iter] == '-') 
-			|| (src[iter] == '+'))
+	d_check = ft_strchr(src, '.') - ft_strrchr(src, '.');
+	if(d_check)
 	{
-		if ((src[iter] == '-' || src[iter] == '+') && iter > 0)
+		perror("Invalid argument, multiple dots");
+		return (0);
+	}
+	if (src[iter] == '-' || src[iter] == '+')
+		iter++;
+	while(src[iter])
+	{
+		if (src[iter] < '0' || src[iter] >'9')
 		{
 			status = 0;
 			break;
-		}
-		if (src[iter] == '.')
-		{
-			d_check += 1;
-			if (d_check > 1)
-			{
-				status = 0;
-				break;
-			}
 		}
 		iter++;
 	}
