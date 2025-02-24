@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:03:45 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 14:04:06 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 15:35:54 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,7 @@
 void	ft_find_id(t_mlx *i_mlx, char **argv, int argc)
 {
 	if (!i_mlx)
-	{
-		printf("mlx issue\n");
 		ft_exit(3);
-	}
-	if (!ft_validate_args(argv))
-		ft_exit(2);
 	if (!ft_strcmp(argv[1], "Mandelbrot"))
 		i_mlx->fractal.id = 1;
 	else if (!ft_strcmp(argv[1], "Julia") && (argc == 4 || argc == 2))
@@ -28,7 +23,7 @@ void	ft_find_id(t_mlx *i_mlx, char **argv, int argc)
 		i_mlx->fractal.id = 2;
 		if (argc == 4)
 		{
-			printf("arg[2] float? = %f\n", ft_atof(argv[2]));
+			i_mlx->fractal.cimaginary;
 		}
 	}
 	else if (!ft_strcmp(argv[1], "Sierpinski"))
@@ -37,4 +32,13 @@ void	ft_find_id(t_mlx *i_mlx, char **argv, int argc)
 	}
 	else
 		ft_exit(1);
+}
+
+void	ft_fractol(char **argv, int argc)
+{
+	t_mlx	i_mlx;
+
+	i_mlx.mlx = mlx_init();
+	ft_find_id(&i_mlx, argv, argc);
+	ft_clean(i_mlx);
 }
