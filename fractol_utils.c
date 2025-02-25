@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:03:45 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 19:28:20 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 19:33:23 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_init_by_id(t_mlx *i_mlx, char **argv, int argc)
 	else if (!ft_strcmp(argv[1], "Julia") && (argc == 4 || argc == 2))
 	{
 		i_mlx->fractal.id = 2;
-		//ft_julia(i_mlx, argv);
+		ft_julia(i_mlx, argv);
 	}
 	else if (!ft_strcmp(argv[1], "Sierpinski"))
 	{
