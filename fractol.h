@@ -6,12 +6,12 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 14:41:43 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 16:51:42 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
-# define FRACTOL
+# define FRACTOL_H
 # include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -32,18 +32,18 @@ typedef struct s_fractal
 {
 	int			id;
 	double		creal;
-	double		cim;
-	double		minreal;
-	double		maxreal;
-	double		min_im;
+	double		cim;  
+	double		minreal; //init
+	double		maxreal; //init
+	double		min_im; 
 	double		max_im;
-	int			x;
-	int			y;
-	int			zoom;
-	int			height;
-	int			width;
-	int			max_iter;
-	int			color;
+	int			x; //init
+	int			y; //init
+	int			zoom; //init
+	int			height; //init
+	int			width; //init
+	int			max_iter; //init
+	int			color; //init
 }				t_fractal;
 
 typedef struct s_mlx

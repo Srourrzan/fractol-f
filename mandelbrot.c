@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:32:36 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 14:40:50 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 17:42:16 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,23 @@
 
 void	ft_init_mandelbrot(t_fractal *fractal)
 {
-	fractal->x = 100;
-	fractal->y = 100;
+	fractal->x = 0;
+	fractal->y = 0;
 	fractal->height = 1000;
 	fractal->width = 1000;
-	fractal->minreal = -3.0;
+	fractal->minreal = -2.0;
 	fractal->maxreal = 2.0;
-	fractal->color = 0xE5989B;
-	fractal->max_iter = 150;
+	fractal->min_im = -2.0;
+	fractal->max_im = 2.0;
+	fractal->color = 0xe5989b;
+	fractal->max_iter = 200;
+	fractal->zoom = 50;
 }
 
 void	ft_coeffs(t_fractal *fractal)
 {
-	double	range;
-
-	range = fractal->maxreal - fractal->minreal;
-	fractal->creal = fractal->x * (range / fractal->width) + fractal->minreal;
-	range = fractal->max_im - fractal->min_im;
-	fractal->cim = fractal->y * (range / fractal->height) + fractal->min_im;
+	fractal->creal = (fractal->x - 500) / fractal->zoom;
+	fractal->cim = (fractal->y - 500) / fractal->zoom;
 }
 
 /*
@@ -70,32 +69,42 @@ int	ft_num_iters(t_fractal *fractal)
 		temp = (real_p * real_p) - (imag_p * imag_p) + fractal->creal;
 		imag_p = 2.0 * real_p * imag_p + fractal->cim;
 		real_p = temp;
+		escap_cond = real_p * real_p + imag_p * imag_p;
 		iter++;
 	}
 	return (iter);
 }
 
+/*
+ * When the function finds the n_iters, if the number of iters is 
+ * within the range of the max_iter then this starting point did not
+ * cause the rest of the points to escape to infinty and I will color
+ * it black (0x000000) else if it has caused the rest of the points
+ * to escape then I will color it some pinkish color (0xE5989B)
+*/
 void	ft_mandelbrot(t_mlx *i_mlx)
 {
-	t_fractal	fractal;
 	int			n_iters;
 
 	n_iters = 0;
-	fractal = i_mlx->fractal;
-	ft_init_mandelbrot(&fractal);
-	mlx_string_put(i_mlx->mlx, i_mlx->win, 450, 10, 0xfefefe, "Mandelbrot");
-	while (fractal.x < fractal.width)
+	ft_init_mandelbrot(&i_mlx->fractal);
+	// mlx_string_put(i_mlx->mlx, i_mlx->win, 450, 10, 0xfefefe, "Mandelbrot");
+	while (i_mlx->fractal.y < i_mlx->fractal.width)
 	{
-		fractal.y = 100;
-		while (fractal.y < fractal.height)
+		i_mlx->fractal.x = 0;
+		while (i_mlx->fractal.x < i_mlx->fractal.height)
 		{
-			ft_coeffs(&fractal);
-			n_iters = ft_num_iters(&fractal);
-			printf("n_iters = %d\n", n_iters);
-			// ft_mlx_pixel_put(&i_mlx->img, fractal.creal,
-			// fractal.cim,0xE5989B);
-			fractal.y++;
+			ft_coeffs(&i_mlx->fractal);
+			n_iters = ft_num_iters(&i_mlx->fractal);
+			if (n_iters == i_mlx->fractal.max_iter)
+				ft_mlx_pixel_put(&i_mlx->img, i_mlx->fractal.x, i_mlx->fractal.y, 0x000000);
+			else
+				ft_mlx_pixel_put(&i_mlx->img, i_mlx->fractal.x, i_mlx->fractal.y, i_mlx->fractal.color * n_iters);
+			
+			i_mlx->fractal.x++;
+			
 		}
-		fractal.x++;
+		i_mlx->fractal.y++;
 	}
+	mlx_put_image_to_window(i_mlx->mlx, i_mlx->win, i_mlx->img.img, 0, 0);
 }
