@@ -6,16 +6,11 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:32:36 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 17:45:17 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 19:04:07 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-/*
- * z = x + iy
- * z_(n+1) = z_(n)^2 + c
- */
 
 void	ft_init_mandelbrot(t_fractal *fractal)
 {
@@ -32,10 +27,14 @@ void	ft_init_mandelbrot(t_fractal *fractal)
 	fractal->zoom = 50;
 }
 
-void	ft_coeffs(t_fractal *fractal)
+void    ft_coeffs(t_fractal *fractal)
 {
-	fractal->creal = (fractal->x - 500) / fractal->zoom;
-	fractal->cim = (fractal->y - 500) / fractal->zoom;
+	double	bound;
+
+	bound = fractal->maxreal - fractal->minreal;
+    fractal->creal = fractal->minreal + fractal->x * (bound / fractal->width);
+	bound = fractal->max_im - fractal->min_im;
+    fractal->cim = fractal->min_im + fractal->y * ((bound) / fractal->height);
 }
 
 /*
@@ -88,7 +87,6 @@ void	ft_mandelbrot(t_mlx *i_mlx)
 
 	n_iters = 0;
 	ft_init_mandelbrot(&i_mlx->fractal);
-	// mlx_string_put(i_mlx->mlx, i_mlx->win, 450, 10, 0xfefefe, "Mandelbrot");
 	while (i_mlx->fractal.y < i_mlx->fractal.height)
 	{
 		i_mlx->fractal.x = 0;
@@ -97,14 +95,16 @@ void	ft_mandelbrot(t_mlx *i_mlx)
 			ft_coeffs(&i_mlx->fractal);
 			n_iters = ft_num_iters(&i_mlx->fractal);
 			if (n_iters == i_mlx->fractal.max_iter)
-				ft_mlx_pixel_put(&i_mlx->img, i_mlx->fractal.x, i_mlx->fractal.y, 0x000000);
+				ft_mlx_pixel_put(&i_mlx->img, i_mlx->fractal.x, 
+					i_mlx->fractal.y, 0x000000);
 			else
-				ft_mlx_pixel_put(&i_mlx->img, i_mlx->fractal.x, i_mlx->fractal.y, i_mlx->fractal.color * n_iters);
-			
+				ft_mlx_pixel_put(&i_mlx->img, i_mlx->fractal.x, 
+					i_mlx->fractal.y, i_mlx->fractal.color + (n_iters * 1000));
 			i_mlx->fractal.x++;
 			
 		}
 		i_mlx->fractal.y++;
 	}
 	mlx_put_image_to_window(i_mlx->mlx, i_mlx->win, i_mlx->img.img, 0, 0);
+	mlx_string_put(i_mlx->mlx, i_mlx->win, 450, 10, 0xfefefe, "Mandelbrot");
 }

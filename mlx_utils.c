@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:46:35 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 17:32:59 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 19:04:30 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_mlx_pixel_put(t_image *data, int x_coord, int y_coord, int color)
 
 	dest = (y_coord * data->line_length + x_coord
 			* (data->bits_per_pixel / 8));
-	(*(unsigned int *)(dest + data->addr ))= color;
+	*((unsigned int *)(dest + data->addr ))= color;
 }
 
 void	ft_init_mlx(t_mlx *i_mlx)
@@ -39,9 +39,3 @@ void	ft_init_mlx(t_mlx *i_mlx)
 	if (!i_mlx->img.addr)
 		ft_clean_and_exit(i_mlx, 8);
 }
-
-// void	map_xy_to_complex(t_fractal *fractal)
-// {
-// 	fractal->creal = fractal->minreal + (fractal->x / fractal->width) * (fractal->max_iter - fractal->minreal);
-// 	fractal
-// }
