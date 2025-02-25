@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 20:00:26 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 20:10:44 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <X11/keysym.h>
 
-# define CREAL 0
+# define CREAL 0.0
 # define CIM 0.8
 
 typedef struct s_image
@@ -88,9 +88,9 @@ double			ft_atof(char *src);
 void			ft_mandelbrot(t_mlx *i_mlx);
 void			ft_coeffs(t_fractal *fractal, int id);
 void			ft_init_mandelbrot(t_fractal *fractal);
-int				ft_num_iters(t_fractal *fractal);
+int	ft_num_iters(t_fractal *fractal, double	real_p, double	imag_p);
 
 //julia functions
-void 			ft_julia(i_mlx, argv, argc);
+void ft_julia(t_mlx *i_mlx, char **argv, int argc);
 
 #endif

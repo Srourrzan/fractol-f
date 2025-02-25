@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:32:36 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 20:00:14 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 20:20:01 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,12 @@ void    ft_coeffs(t_fractal *fractal, int id)
  * The escape condition (Zr * Zr) + (Zi * Zi) >= 4 where the point will go
  * outside Mandelbrot set.
  */
-int	ft_num_iters(t_fractal *fractal)
+int	ft_num_iters(t_fractal *fractal, double	real_p, double	imag_p)
 {
 	int		iter;
-	double	real_p;
-	double	imag_p;
 	double	temp;
 	double	escap_cond;
 
-	real_p = 0;
-	imag_p = 0;
 	iter = 0;
 	escap_cond = real_p * real_p + imag_p * imag_p;
 	while ((iter < fractal->max_iter) && escap_cond < 4.0)
@@ -102,8 +98,8 @@ void	ft_mandelbrot(t_mlx *i_mlx)
 		i_mlx->fractal.x = 0;
 		while (i_mlx->fractal.x < i_mlx->fractal.width)
 		{
-			ft_coeffs(&i_mlx->fractal, &i_mlx->fractal.id);
-			n_iters = ft_num_iters(&i_mlx->fractal);
+			ft_coeffs(&i_mlx->fractal, i_mlx->fractal.id);
+			n_iters = ft_num_iters(&i_mlx->fractal, 0, 0);
 			if (n_iters == i_mlx->fractal.max_iter)
 				ft_mlx_pixel_put(&i_mlx->img, i_mlx->fractal.x, 
 					i_mlx->fractal.y, 0x000000);
