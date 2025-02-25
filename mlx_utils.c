@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:46:35 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 19:04:30 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 19:27:38 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,11 @@ void	ft_init_mlx(t_mlx *i_mlx)
 				&i_mlx->img.line_length, &i_mlx->img.endian);
 	if (!i_mlx->img.addr)
 		ft_clean_and_exit(i_mlx, 8);
+}
+
+int	ft_key_hook(int keycode, t_mlx *i_mlx)
+{
+	if (keycode == XK_Escape)
+		ft_clean_and_exit(i_mlx, 9);
+	return (0);
 }
