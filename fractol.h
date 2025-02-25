@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 19:34:56 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 19:50:01 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdlib.h>
 # include <X11/keysym.h>
 
-# define CX 0
-# define CY 0.8
+# define CREAL 0
+# define CIM 0.8
 
 typedef struct s_image
 {
@@ -33,18 +33,20 @@ typedef struct s_fractal
 {
 	int			id;
 	double		creal;
-	double		cim;  
-	double		minreal; //init
-	double		maxreal; //init
+	double		cim;
+	double		zreal;
+	double		zim;  
+	double		minreal;
+	double		maxreal;
 	double		min_im; 
 	double		max_im;
-	int			x; //init
-	int			y; //init
-	int			zoom; //init
-	int			height; //init
-	int			width; //init
-	int			max_iter; //init
-	int			color; //init
+	int			x;
+	int			y;
+	int			zoom;
+	int			height;
+	int			width;
+	int			max_iter;
+	int			color;
 }				t_fractal;
 
 typedef struct s_mlx
@@ -89,6 +91,6 @@ void			ft_init_mandelbrot(t_fractal *fractal);
 int				ft_num_iters(t_fractal *fractal);
 
 //julia functions
-void 			ft_julia(i_mlx, argv);
+void 			ft_julia(i_mlx, argv, argc);
 
 #endif
