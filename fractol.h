@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 16:51:42 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 19:16:42 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void			ft_fractol(char **argv, int argc);
 void			ft_exit(int exit_num);
 void			ft_clean(t_mlx *i_mlx);
 void			ft_clean_and_exit(t_mlx *i_mlx, int exit_num);
+int	 close_handle(t_mlx *i_mlx);
 
 // parse_args functions
 int				ft_is_float(char *src);

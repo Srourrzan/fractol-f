@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:06:18 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 18:19:29 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 19:18:57 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,10 @@ void	ft_clean_and_exit(t_mlx *i_mlx, int exit_num)
 {
 	ft_clean(i_mlx);
 	ft_exit(exit_num);
+}
+
+int	 close_handle(t_mlx *i_mlx)
+{
+	ft_clean_and_exit(i_mlx, 8);
+	return (0);
 }
