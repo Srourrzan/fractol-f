@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 20:10:44 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 20:35:18 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <X11/keysym.h>
+# include <unistd.h>
 
 # define CREAL 0.0
 # define CIM 0.8
@@ -68,6 +69,7 @@ void			ft_mlx_pixel_put(t_image *data, int x_coord, int y_coord,
 					int color);
 void			ft_init_mlx(t_mlx *i_mlx);
 int	ft_key_hook(int keycode, t_mlx *i_mlx);
+void	ft_init_window(t_mlx *i_mlx);
 
 // sets functions
 void			ft_init_by_id(t_mlx *i_mlx, char **argv, int argc);
