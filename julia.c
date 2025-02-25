@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:33:38 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 20:37:20 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 22:06:45 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void    ft_init_julia(t_fractal *fractal, char **argv, int argc)
 	fractal->max_im = 2.0;
 	fractal->color = 0xe5989b;
 	fractal->max_iter = 300;
-	fractal->zoom = 50;
+	fractal->zoom = 1.0;
+	fractal->offsetx = 0.0;
+	fractal->offsety = 0.0;
 }
 
 void ft_julia(t_mlx *i_mlx, char **argv, int argc)

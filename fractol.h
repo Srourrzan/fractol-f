@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 20:35:18 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 22:05:45 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_fractal
 	int			width;
 	int			max_iter;
 	int			color;
+	double		offsetx;
+	double		offsety;
 }				t_fractal;
 
 typedef struct s_mlx
@@ -70,6 +72,7 @@ void			ft_mlx_pixel_put(t_image *data, int x_coord, int y_coord,
 void			ft_init_mlx(t_mlx *i_mlx);
 int	ft_key_hook(int keycode, t_mlx *i_mlx);
 void	ft_init_window(t_mlx *i_mlx);
+int    ft_mouse_zoom(int key, int x, int y, t_mlx *i_mlx);
 
 // sets functions
 void			ft_init_by_id(t_mlx *i_mlx, char **argv, int argc);

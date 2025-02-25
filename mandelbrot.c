@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:32:36 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 20:20:01 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 22:06:37 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	ft_init_mandelbrot(t_fractal *fractal)
 	fractal->max_im = 2.0;
 	fractal->color = 0xe5989b;
 	fractal->max_iter = 200;
-	fractal->zoom = 50;
+	fractal->zoom = 1.0;
+	fractal->offsetx = 0.0;
+	fractal->offsety = 0.0;
 }
 
 void    ft_coeffs(t_fractal *fractal, int id)
