@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   finish_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/22 19:50:32 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 15:10:29 by rsrour           ###   ########.fr       */
+/*   Created: 2025/02/24 13:06:18 by rsrour            #+#    #+#             */
+/*   Updated: 2025/02/24 18:19:29 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	main(int argc, char **argv)
+void	ft_exit(int exit_num)
 {
-	if (argc > 1 && argc < 5)
+	exit(exit_num);
+}
+
+void	ft_clean(t_mlx *i_mlx)
+{
+	if (!i_mlx)
+		return ;
+	if (i_mlx->img.img)
+		mlx_destroy_image(i_mlx->mlx, i_mlx->img.img);
+	if (i_mlx->win)
+		mlx_destroy_window(i_mlx->mlx, i_mlx->win);
+	if (i_mlx->mlx)
 	{
-		if (!ft_validate_args(argv))
-			ft_exit(2);
-		ft_fractol(argv, argc);
+		mlx_destroy_display(i_mlx->mlx);
+		free(i_mlx->mlx);
+		i_mlx->mlx = NULL;
 	}
-	else
-	{
-		perror("Usage: COMPLETE THIS LATER");
-		exit(1);
-	}
-	return (0);
+}
+
+void	ft_clean_and_exit(t_mlx *i_mlx, int exit_num)
+{
+	ft_clean(i_mlx);
+	ft_exit(exit_num);
 }

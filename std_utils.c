@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:25:37 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/23 20:53:51 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/24 13:22:42 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,101 +22,35 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (s1[iter] - s2[iter]);
 }
 
-void	ft_exit(int exit_num)
+int	ft_strlen(char *src)
 {
-	exit(exit_num);
-}
-// int	ft_atoi(char *src)
-// {
-// 	int	iter;
-// }
+	int	len;
 
-int		ft_is_float(char *src)
-{
-	int		iter;
-	int		status;
-	int		d_check;	
-	
-	iter = 0;
-	status = 1;
-	d_check = 0;
-	while ((src[iter] >= '0' && src[iter] <= '9') 
-			|| (src[iter] == '.') || (src[iter] == '-') 
-			|| (src[iter] == '+'))
-	{
-		if ((src[iter] == '-' || src[iter] == '+') && iter > 0)
-		{
-			status = 0;
-			break;
-		}
-		if (src[iter] == '.')
-		{
-			d_check += 1;
-			if (d_check > 1)
-			{
-				status = 0;
-				break;
-			}
-		}
-		iter++;
-	}
-	return (status);
+	len = 0;
+	while (src[len])
+		len++;
+	return (len);
 }
 
-double	ft_atof(char *src)
+char	*ft_strchr(char *src, int c)
 {
-	int	iter;
-	double	d_num;
-	int		ten;
-	int		sign;
-	
-	sign = 1;
-	d_num = 0.0;
-	iter = 0;
-	ten = 10;
-	if (src[iter] == '-' || src[iter] == '+')
-	{
-		if (src[iter] == '-')
-			sign = -1;
-		iter++;
-	}
-	while ((src[iter] >= '0' && src[iter] <= '9') || (src[iter] == '.'))
-	{
-		if (src[iter] == '.')
-		{
-			iter++;
-			break;
-		}
-		d_num = (d_num * 10) + (src[iter] - '0');
-		iter++;
-	}
-	while (src[iter])
-	{
-		d_num = (src[iter] - '0') / ten;
-		ten *= 10;
-		iter++;
-	}
-	return (d_num * sign);
+	while (*src != '\0' && *src != (unsigned char)c)
+		src++;
+	if (*src == (unsigned char)c)
+		return ((char *)src);
+	return (NULL);
 }
 
-int		ft_validate_args(char **argv)
+char	*ft_strrchr(char *src, int c)
 {
-	int		iter;
+	int	index;
 
-	iter = 2;
-	while (argv[iter])
+	index = ft_strlen(src);
+	while (index >= 0)
 	{
-		if(!ft_is_float(argv[iter]))
-			return (0);
-		iter++;
+		if (src[index] == (unsigned char)c)
+			return ((char *)src + index);
+		index--;
 	}
-	return (1);
+	return (NULL);
 }
-
-// int	main()
-// {
-// 	char *s1 = "9.8";
-	
-// 	printf("s1 = %f\n", ft_atof(s1));
-// 	return(0);
-// }
