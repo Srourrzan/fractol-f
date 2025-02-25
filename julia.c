@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:33:38 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 19:52:29 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 20:01:22 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void ft_julia(t_mlx *i_mlx, char **argv, int argc)
 		i_mlx->fractal.x = 0;
 		while (i_mlx->fractal.x < i_mlx->fractal.width)
 		{
-			ft_coeffs(&i_mlx->fractal);
+			ft_coeffs(&i_mlx->fractal, &i_mlx->fractal.id);
 			n_iters = ft_num_iters(&i_mlx->fractal);
 			if (n_iters == i_mlx->fractal.max_iter)
 				ft_mlx_pixel_put(&i_mlx->img, i_mlx->fractal.x, 

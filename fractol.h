@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 19:50:01 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 20:00:26 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ double			ft_atof(char *src);
 
 // mandelbrot functions
 void			ft_mandelbrot(t_mlx *i_mlx);
-void			ft_coeffs(t_fractal *fractal);
+void			ft_coeffs(t_fractal *fractal, int id);
 void			ft_init_mandelbrot(t_fractal *fractal);
 int				ft_num_iters(t_fractal *fractal);
 

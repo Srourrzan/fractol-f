@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:32:36 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 19:04:07 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 20:00:14 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,24 @@ void	ft_init_mandelbrot(t_fractal *fractal)
 	fractal->zoom = 50;
 }
 
-void    ft_coeffs(t_fractal *fractal)
+void    ft_coeffs(t_fractal *fractal, int id)
 {
 	double	bound;
 
-	bound = fractal->maxreal - fractal->minreal;
-    fractal->creal = fractal->minreal + fractal->x * (bound / fractal->width);
-	bound = fractal->max_im - fractal->min_im;
-    fractal->cim = fractal->min_im + fractal->y * ((bound) / fractal->height);
+	if (id == 1)
+	{
+		bound = fractal->maxreal - fractal->minreal;
+		fractal->creal = fractal->minreal + fractal->x * (bound / fractal->width);
+		bound = fractal->max_im - fractal->min_im;
+		fractal->cim = fractal->min_im + fractal->y * ((bound) / fractal->height);
+	}
+	else if (id == 2)
+	{
+		bound = fractal->maxreal - fractal->minreal;
+		fractal->zreal = fractal->minreal + fractal->x * (bound / fractal->width);
+		bound = fractal->max_im - fractal->min_im;
+		fractal->zim = fractal->min_im + fractal->y * ((bound) / fractal->height);
+	}
 }
 
 /*
@@ -92,7 +102,7 @@ void	ft_mandelbrot(t_mlx *i_mlx)
 		i_mlx->fractal.x = 0;
 		while (i_mlx->fractal.x < i_mlx->fractal.width)
 		{
-			ft_coeffs(&i_mlx->fractal);
+			ft_coeffs(&i_mlx->fractal, &i_mlx->fractal.id);
 			n_iters = ft_num_iters(&i_mlx->fractal);
 			if (n_iters == i_mlx->fractal.max_iter)
 				ft_mlx_pixel_put(&i_mlx->img, i_mlx->fractal.x, 
