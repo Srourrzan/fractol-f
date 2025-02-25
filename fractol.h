@@ -6,16 +6,18 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 17:59:41 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/24 20:03:21 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/25 14:41:43 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef FRACTOL_H
+# define FRACTOL
+# include <mlx.h>
+# include <stdio.h>
+# include <stdlib.h>
 
-#define CX 0
-#define CY 0.8
+# define CX 0
+# define CY 0.8
 
 typedef struct s_image
 {
@@ -81,3 +83,6 @@ double			ft_atof(char *src);
 void			ft_mandelbrot(t_mlx *i_mlx);
 void			ft_coeffs(t_fractal *fractal);
 void			ft_init_mandelbrot(t_fractal *fractal);
+int				ft_num_iters(t_fractal *fractal);
+
+#endif
