@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 		perror("Usage: COMPLETE THIS LATER");
 		exit(1);
 	}
-	mlx_destroy_display(i_mlx.mlx);
+	//mlx_destroy_display(i_mlx.mlx);
+	//free(i_mlx.mlx);
 	return (0);
 }
