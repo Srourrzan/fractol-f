@@ -1,8 +1,7 @@
 # _*_ MakeFile _*_
 
 TARGET = fractol
-SRCS = main.c display_utils.c mlx_utils.c std_utils.c finish_utils.c parse_args.c \
-		fractol_utils.c mandelbrot.c julia.c zoom_utils.c
+SRCS = main.c mlx_utils.c std_utils.c finish_utils.c parse_args.c fractol_utils.c mandelbrot.c julia.c
 OBJ_DIR = obj
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))

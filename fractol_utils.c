@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:03:45 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/25 21:02:03 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/26 11:02:27 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,15 @@ void	ft_init_by_id(t_mlx *i_mlx, char **argv, int argc)
 	{
 		i_mlx->fractal.id = 1;
 		ft_init_window(i_mlx);
+		ft_init_mandelbrot(&i_mlx->fractal);
 		ft_mandelbrot(i_mlx);
 	}
 	else if (!ft_strcmp(argv[1], "Julia") && (argc == 4 || argc == 2))
 	{
 		i_mlx->fractal.id = 2;
 		ft_init_window(i_mlx);
-		ft_julia(i_mlx, argv, argc);
-	}
-	else
-	{
-		write(2, "Error\n", 6);
-		ft_exit(1);
+		ft_init_julia(&i_mlx->fractal, argv, argc);
+		ft_julia(i_mlx);
 	}
 }
 
